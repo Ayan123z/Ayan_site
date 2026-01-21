@@ -4,280 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иманалиев Аян — Ресми сайт</title>
-    
+    <meta name="description" content="Иманалиев Аянның ресми сайты. Жазушы, ақын, спедкубер, боулер, маркетолог, дизайнер.">
+    <meta name="keywords" content="Иманалиев Аян, Аян Қалам, ақын, жазушы, спедкубер, боулер, маркетолог, дизайнер">
+    <meta name="author" content="Иманалиев Аян">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <style>
-        :root {
-            --bg-color: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-color: #f0f0f0;
-            --accent-color: #ff8c00;
-            --story-accent: #bbdefb;
-        }
-
-        /* Ақ түсті режим */
-        body.light-mode {
-            --bg-color: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e1eec3, #f0f2f0);
-            --card-bg: rgba(0, 0, 0, 0.07);
-            --text-color: #2c3e50;
-            --accent-color: #e67e22;
-            --story-accent: #3498db;
-        }
-
         body {
-            margin: 0; font-family: 'Segoe UI', sans-serif;
-            background: var(--bg-color); background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite; color: var(--text-color);
-            line-height: 1.8; transition: 0.5s; overflow-x: hidden;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #f0f0f0;
+            line-height: 1.8;
         }
 
-        .container { max-width: 800px; margin: auto; padding: 60px 20px; }
-
-        /* Түнгі режим ауыстырғыш */
-        .theme-toggle {
-            position: fixed; top: 20px; right: 20px;
-            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.2);
-            color: var(--text-color); padding: 12px; border-radius: 50%;
-            cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+        .container { max-width: 900px; margin: auto; padding: 60px 20px; }
 
         .profile-img {
-            display: block; width: 180px; height: 180px; margin: 0 auto 25px;
-            border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.2);
-            object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: block;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            margin: 0 auto 25px;
+            border-radius: 25px;
+            border: 4px solid #bbdefb;
+            box-shadow: 0 10px 25px rgba(187,222,251,0.5);
+            transition: 0.5s;
+        }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
+
+        h1 { font-size: 40px; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; opacity: 0.8; margin-bottom: 40px; font-style: italic; }
+
+        .section { 
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        h1 { text-align: center; font-size: 32px; margin-bottom: 5px; }
-        .subtitle { text-align: center; opacity: 0.8; margin-bottom: 40px; color: var(--story-accent); }
+        h2 { color: #bbdefb; border-bottom: 2px solid rgba(187,222,251,0.3); padding-bottom: 10px; margin-top: 0; }
 
-        .section {
-            background: var(--card-bg); padding: 25px; border-radius: 20px;
-            margin-bottom: 30px; backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Өлеңдер */
+        .poem-box { margin-bottom: 20px; }
+        .poem-preview {
+            cursor: pointer;
+            background: rgba(255,140,0,0.2);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-style: italic;
+            border-left: 5px solid #ff8c00;
+        }
+        .poem-full {
+            display: none;
+            white-space: pre-line;
+            font-style: italic;
+            padding: 20px;
+            border-left: 5px solid #ff8c00;
+            background: rgba(0,0,0,0.2);
+            border-radius: 0 0 12px 12px;
         }
 
-        h2 { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 25px; }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.03); border-radius: 15px;
-            padding: 20px; margin-bottom: 20px; border-left: 4px solid var(--accent-color);
+        /* Соц. желі логотиптер */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
         }
-        .story-card { border-left-color: var(--story-accent); }
-
-        .content-title { font-size: 1.25em; font-weight: bold; color: var(--accent-color); margin-bottom: 10px; display: block; }
-        .story-card .content-title { color: var(--story-accent); }
-
-        .preview-text { font-style: italic; opacity: 0.8; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
-        .full-text { display: none; white-space: pre-line; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); margin-top: 15px; }
-
-        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
-
-        .read-more {
-            background: none; border: 1px solid var(--accent-color); color: var(--accent-color);
-            padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold;
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .social-btn:hover { transform: translateY(-7px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
-        .like-btn { background: none; border: none; color: #ff4757; cursor: pointer; font-size: 18px; display: flex; align-items: center; gap: 6px; }
+        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .wa { background: #25D366; }
+        .tt { background: #000; border: 1px solid #ff0050; }
+        .th { background: #000; border: 1px solid #fff; }
 
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        footer { text-align: center; opacity: 0.5; padding: 40px; font-size: 0.9em; }
+        .gallery { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .gallery img { width: 250px; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: 0.4s; }
+        .gallery img:hover { transform: scale(1.05) rotate(2deg); }
+
+        footer { text-align: center; opacity: 0.5; padding: 40px 0; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-
 <div class="container">
+
     <img src="photo/photo.jpg" alt="Иманалиев Аян" class="profile-img">
     <h1>Иманалиев Аян</h1>
-    <p class="subtitle">Жазушы · Ақын · Спидкубер · Маркетолог</p>
+    <div class="subtitle">Жазушы · Ақын · Спедкубер · Боуелер · Маркетолог · Дизайнер</div>
 
     <section class="section">
-        <h2>Проза (Әңгіме)</h2>
-        <div class="content-card story-card" id="story1">
-            <span class="content-title">«Бақыт есімді бала»</span>
-            <div class="preview-text">Жалғыздық, Даланың салқын лебі бар, өзіммен-өзім бір кофехананың терассасында...</div>
-            <div class="full-text">
-                Жалғыздық, Даланың салқын лебі бар, өзіммен-өзім бір кофехананың терассасында, жансыз төрт аяқты ағаш орындықта шалқая сүйеніп отырмын, өйткені маған солай ұнайды ал үстел үстінде қарапайым ғана кофе мен өміріміздін манызды бір бөлшегіне айналып үлгерген ұялы телефон тұр. 
-                
-                Санамның ішіне шомып кетіп күрделі ойлардын күрмеуіңде отырсамда, қарсы алдымда балалар алаңқайы бар екен сол жақта ойнақтап жүрген кішкентайлардын жүздерінен көзімді алмаймын, еш уайымы жоқ бәрі тек арлы бері жүгіріп ерекше ойын қуалап жүр. 
+        <h2>Өмірбаян</h2>
+        <p><strong>Иманалиев Аян</strong> — 2002 жылғы 25 қаңтарда Ақтөбе облысында дүниеге келген. Ол көп қырлы шығармашылық тұлға: ақын, жазушы, спедкубер және дизайнер.</p>
+    </section>
 
-                Бір кездері қолында ала добы бар балақай екінші балаға - осы сенің папаң қайда деп сұрады...? 
-
-                Екінші бала үшін бұл тосын сұрақ болмаған секілді ұзақ ойланбай қолындағы ала допқа қарап тұрып, алдымен иығын көтере білмимін деп жауап берді... Балаларда аса арам ой болмасада күлу үшін себеп табады ғой, сұрақтын жауабын естей сала барлығы бірдей жабыла күлді.
-
-                Орнымнаң дереу тұрып жаныңа асыға бардымда, тізерлей отырып: "Балақан атың кім?" деп едім. Ол маған бұрыла қарап: "Бақыт" деді. "Анам, мен оның бақыты екенмін сол үшін сөйтіп қойыпты". 
-
-                Мен: "Досым айта қойшы, ал сен үшін бақыт деген не?" - деп сұрап едім, ол маған жақындап құлағыма: "Құдаймен ойнау" деп сыбырлады... 
-                
-                Бақыт ол еркін ойыншылардын алаңы екенін ұқтым. 
-
-                Соңы... ©️ Аян
+    <section class="section">
+        <h2>Өлең</h2>
+        <div class="poem-box">
+            <div class="poem-preview" onclick="togglePoem(this)">
+Бір шыбық гүл
+Гүлдерге бәрі-ақ қызыға алады,...
             </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('story1')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
+            <div class="poem-full">
+Гүлдерге бәрі-ақ қызыға алады,
+Күлтесінде үміттің ізі қалады.
+Қауызын ашқан бір шыбық гүлді
+Бір күні біреу үзіп алады.
+
+Шаршатады ма, әлде жазық тұғыры,
+Ғазал боп кеткен ғашықтық үні.
+Көлеңке кезген сәулеге құмар —
+Гүлдердің сондай нәзік ғұмыры.
+
+Даланың жауып жаңбыры майда,
+Бүршік дәндері інгәләмайды ма.
+Жарым ес жандар тікен сабақты
+Түбінен қиып, ұрлап алмай ма.
+
+Шырай түспесе, солып барлығы,
+Шуақ шашатын сынсып әрбірі.
+Қоңыр күзде қурап қалатын —
+Бір шыбық гүлдің қыршын тағдыры.
+
+© Үшәріп
             </div>
         </div>
     </section>
 
     <section class="section">
-        <h2>Поэзия</h2>
-
-        <div class="content-card" id="poem1">
-            <span class="content-title">«Тәуелді»</span>
-            <div class="preview-text">Білмейміз, шын қайда құрбандық қабірі, Құрметке лайықты шейіттін әр бірі.</div>
-            <div class="full-text">
-                Білмейміз, шын қайда құрбандық қабірі, 
-                Құрметке лайықты шейіттін әр бірі. 
-                Бейттін басында бір белгі тұрады, 
-                Бейбіт күн астында болмаған қадірі.
-                Алаштын азабы басынан кеше өткен 
-                Мүмкін ол… Қазақтын тағдыры. 
-
-                Жүрекпен ұғарма мұндайды жәй кісі, 
-                Шын ұқса жан бермес елі үшін қай кісі. 
-                Бар қазақ бағы үшін, бас тіксе бір қазақ,
-                Көре алмай көп қазақ жолынан тайды осы, 
-                Бәлкім бұл… Қазақтын қайғысы. 
-
-                Кешегі қазақтын тәуелсіз арманы,
-                Бүгінгі қазағың, ал неге тәуелді…?
-            </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('poem1')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
-            </div>
-        </div>
-
-        <div class="content-card" id="poem2">
-            <span class="content-title">«Ұйқысыз түн»</span>
-            <div class="preview-text">Көшенін шуы басылған, дала тыныш, Қала тыныш шықпайды ала дыбыс.</div>
-            <div class="full-text">
-                Көшенін шуы басылған, дала тыныш, 
-                Қала тыныш шықпайды ала дыбыс. 
-                Бұл жалғанда қалғандай өзін жалғыз, 
-                Күңіреніп сонаң соң қалады іш. 
-
-                Суық самал жел есіп, қос жанарға, 
-                Тыныштықта сан ойлар бос боларма.
-                Маңғаз ғалам менімен дос боларма.
-
-                Мұңға толы кеуде үшін әйтпесе олар, 
-                Ұйқысыз түннің барын қайдан білсін.
-            </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('poem2')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
-            </div>
-        </div>
-
-        <div class="content-card" id="poem3">
-            <span class="content-title">«Мұң берші»</span>
-            <div class="preview-text">Жүрегіме мұң берші, өмір, Мұң берші, өмір, жылайын.</div>
-            <div class="full-text">
-                Жүрегіме мұң берші, өмір,
-                Мұң берші, өмір, жылайын.
-                Жылайын да Құдайымнан сұрайын.
-                Мен әйтпесе барлық мәнді жоғалттым,
-                Жоғалтқан жан болмасам деп, Құдайын.
-
-                Мұң берші, өмір,
-                Мен үшін ғажап – мұңдану,
-                Мұңдана тұра, Тәңірден сұрап нұрлану.
-                Мұңданбау бірақ – уақытқа бекер ұрлану.
-            </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('poem3')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
-            </div>
-        </div>
-
-        <div class="content-card" id="poem4">
-            <span class="content-title">«Бақ құс»</span>
-            <div class="preview-text">Жылы жаққа құштар, құстар ғана ма, Қанаттарын серпей берер ақ ала.</div>
-            <div class="full-text">
-                Жылы жаққа құштар, құстар ғана ма, 
-                Қанаттарын серпей берер ақ ала.
-                Тау секілді тұрақты емес дуние, 
-                Күнде ұзақ нұр шашпайды далаға.
-                
-                Бақ дегенде аяқ болмайды түсінші, 
-                Аяқ болса таптайды ғой тар ізді.
-                Бақ дегенде қанатта жоқ қонатын, 
-                Сірә олар тулатын тәрізді.
-            </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('poem4')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
-            </div>
-        </div>
-
-        <div class="content-card" id="poem5">
-            <span class="content-title">«Суретші болсам»</span>
-            <div class="preview-text">Сөзбен емес, жырмен емес, бейнелеп тек бар мұңды, Түрлі түспен бояушы едім тағдырды.</div>
-            <div class="full-text">
-                Сөзбен емес, жырмен емес, бейнелеп тек бар мұңды, 
-                Түрлі түспен бояушы едім тағдырды. 
-                Көніл күйді ұлпа бұлттай құбылтып, 
-                Жан сырымдай, жауғызушы ем жаңбырды. 
-
-                Мен ол кезде тек өмірді саламын. 
-            </div>
-            <div class="card-footer">
-                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
-                <button class="like-btn" onclick="likeItem('poem5')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
-            </div>
+        <h2>Суреттер</h2>
+        <div class="gallery">
+            <img src="insta1/insta1.jpg" alt="Аян фото 1">
+            <img src="insta2/insta2.jpg" alt="Аян фото 2">
+            <img src="insta3/insta3.jpg" alt="Аян фото 3">
         </div>
     </section>
 
-    <footer>© 2024 Иманалиев Аян. Барлық құқықтар қорғалған.</footer>
+    <section class="social-links">
+        <a href="https://www.instagram.com/ayan_qalam/" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://wa.me/77471752939" class="social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://www.tiktok.com/@ayan_qalam" class="social-btn tt" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://www.threads.net/@ayan_qalam" class="social-btn th" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
+    </section>
+
+    <footer>© 2025 Иманалиев Аян. Барлық құқықтар қорғалған.</footer>
+
 </div>
 
+<!-- Скрипт -->
 <script>
-    function toggleTheme() {
-        document.body.classList.toggle('light-mode');
-        const icon = document.querySelector('.theme-toggle i');
-        icon.className = document.body.classList.contains('light-mode') ? 'fas fa-sun' : 'fas fa-moon';
-    }
-
-    function toggleContent(btn) {
-        const fullText = btn.parentElement.previousElementSibling;
-        const preview = fullText.previousElementSibling;
-        if (fullText.style.display === "block") {
-            fullText.style.display = "none";
-            preview.style.display = "-webkit-box";
-            btn.innerText = "Толығырақ";
+    function togglePoem(el) {
+        const full = el.nextElementSibling;
+        if(full.style.display === "block") {
+            full.style.display = "none";
         } else {
-            fullText.style.display = "block";
-            preview.style.display = "none";
-            btn.innerText = "Жабу";
-        }
-    }
-
-    function likeItem(id) {
-        let countEl = document.querySelector(`#${id} .like-count`);
-        let icon = document.querySelector(`#${id} .like-btn i`);
-        let count = parseInt(countEl.innerText);
-        if(icon.classList.contains('far')) {
-            icon.className = 'fas fa-heart';
-            countEl.innerText = count + 1;
-        } else {
-            icon.className = 'far fa-heart';
-            countEl.innerText = count - 1;
+            full.style.display = "block";
         }
     }
 </script>
 
+<!-- Көрінбейтін есептегіш -->
 <script type="text/javascript">
 var sc_project=13200323; 
 var sc_invisible=1; 
 var sc_security="5cd2c89f"; 
 </script>
 <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13200323/0/5cd2c89f/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<noscript>
+<div class="statcounter">
+<a title="Web Analytics" href="https://statcounter.com/" target="_blank">
+<img class="statcounter" src="https://c.statcounter.com/13200323/0/5cd2c89f/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade">
+</a>
+</div>
+</noscript>
 
 </body>
 </html>
