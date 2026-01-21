@@ -8,173 +8,196 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
+        :root {
+            --bg-color: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #f0f0f0;
+            --accent-color: #ff8c00;
+            --story-accent: #bbdefb;
+        }
+
+        /* Ақ түсті режим (Light Mode) */
+        body.light-mode {
+            --bg-color: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e1eec3, #f0f2f0);
+            --card-bg: rgba(0, 0, 0, 0.05);
+            --text-color: #2c3e50;
+            --accent-color: #e67e22;
+            --story-accent: #3498db;
+        }
+
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
+            background: var(--bg-color);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #f0f0f0;
+            color: var(--text-color);
             line-height: 1.8;
+            transition: 0.5s;
         }
 
         .container { max-width: 800px; margin: auto; padding: 60px 20px; }
 
-        .profile-img {
-            display: block; width: 250px; height: auto; margin: 0 auto 30px;
-            border-radius: 15px; border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* Түнгі режим ауыстырғыш */
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px;
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-color); padding: 10px; border-radius: 50%;
+            cursor: pointer; z-index: 1000; transition: 0.3s;
         }
 
-        h1 { font-size: 42px; text-align: center; margin-bottom: 5px; }
-        .subtitle { opacity: 0.9; text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #bbdefb; }
+        .profile-img {
+            display: block; width: 200px; height: 200px; margin: 0 auto 30px;
+            border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover;
+        }
 
-        .social-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 50px; }
+        h1 { font-size: 36px; text-align: center; margin-bottom: 5px; }
+        .subtitle { opacity: 0.8; text-align: center; margin-bottom: 40px; font-size: 1em; color: var(--story-accent); }
+
+        .social-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 50px; }
         .social-btn {
             display: flex; align-items: center; gap: 8px; text-decoration: none; color: white;
-            padding: 10px 22px; border-radius: 50px; font-weight: bold; font-size: 14px; transition: 0.3s ease;
+            padding: 8px 18px; border-radius: 50px; font-size: 13px; transition: 0.3s ease;
         }
-        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
 
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
         .wa { background: #25D366; }
-        .tt { background: #000; border: 1px solid #ff0050; }
-        .th { background: #000; border: 1px solid #fff; }
+        .tt { background: #000; }
 
         .section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 35px; border-radius: 20px; margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 30px; border-radius: 20px; margin-bottom: 30px;
             backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h2 { color: #bbdefb; border-bottom: 1px solid rgba(187, 222, 251, 0.2); padding-bottom: 10px; margin: 0 0 20px 0; }
-
-        /* Мазмұндық блоктар */
-        .content-box { margin-bottom: 15px; }
-        .content-header {
-            cursor: pointer;
-            background: rgba(187, 222, 251, 0.1);
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-weight: 500;
-            border-left: 5px solid #bbdefb;
-            transition: 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px; padding: 20px; margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color); position: relative;
         }
-        .content-header:hover { background: rgba(187, 222, 251, 0.2); }
+        .story-card { border-left-color: var(--story-accent); }
+
+        .content-title { font-size: 1.25em; font-weight: bold; color: var(--accent-color); margin-bottom: 10px; display: block; }
+        .story-card .content-title { color: var(--story-accent); }
         
-        /* Өлеңдерге арналған стиль */
-        .poem-header { border-left-color: #ff8c00; background: rgba(255, 140, 0, 0.1); }
-        .poem-header:hover { background: rgba(255, 140, 0, 0.2); }
+        .preview-text { font-style: italic; opacity: 0.8; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        .content-body {
-            display: none;
-            white-space: pre-line;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 0 0 12px 12px;
-            margin-top: -5px;
+        .full-text { display: none; white-space: pre-line; margin-bottom: 15px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px; }
+
+        .card-footer { display: flex; justify-content: space-between; align-items: center; }
+
+        .read-more {
+            background: none; border: 1px solid var(--accent-color); color: var(--accent-color);
+            padding: 6px 18px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold;
         }
 
-        /* Әңгімелер үшін ерекше стиль */
-        .story-text { font-style: normal !important; line-height: 1.6; color: #e0e0e0; text-align: justify; }
-
-        .insta-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-        .insta-post { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+        .like-btn {
+            background: none; border: none; color: #ff4757; cursor: pointer; font-size: 18px;
+            display: flex; align-items: center; gap: 5px; transition: 0.3s;
+        }
+        .like-btn:hover { transform: scale(1.2); }
 
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        footer { text-align: center; opacity: 0.5; padding: 40px 0; }
+        footer { text-align: center; opacity: 0.4; padding: 40px 0; font-size: 0.8em; }
     </style>
 </head>
 <body>
 
-<div class="container">
+<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
 
+<div class="container">
     <img src="photo/photo.jpg" alt="Иманалиев Аян" class="profile-img">
     <h1>Иманалиев Аян</h1>
-    <div class="subtitle">Жазушы · Ақын · Спидкубер · Боулер · Маркетолог · Дизайнер</div>
+    <div class="subtitle">Жазушы · Ақын · Спидкубер</div>
 
     <div class="social-links">
         <a href="https://www.instagram.com/ayan_qalam/" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
         <a href="https://wa.me/77471752939" class="social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="https://www.tiktok.com/@ayan_qalam" class="social-btn tt" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-        <a href="https://www.threads.net/@ayan_qalam" class="social-btn th" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
     </div>
 
     <section class="section">
-        <h2>Проза (Әңгімелер)</h2>
-        <div class="content-box">
-            <div class="content-header" onclick="toggleContent(this)">«Бақыт есімді бала» <span>+</span></div>
-            <div class="content-body story-text">
-                Жалғыздық, 
-                Даланың салқын лебі бар, өзіммен-өзім бір кофехананың терассасында...
-                
-                (Әңгіменің толық мәтіні осы жерде орналасқан)
-                
-                ...мен мұңы балақайдын достарыңа айтпасамда өз достарыма айтуды жөн көрдім. 
+        <h2>Поэзия</h2>
+        
+        <div class="content-card" id="poem1">
+            <span class="content-title">«Тәуелді»</span>
+            <div class="preview-text">Білмейміз, шын қайда құрбандық қабірі, Құрметке лайықты шейіттін әр бірі.</div>
+            <div class="full-text">
+                Бейттін басында бір белгі тұрады, 
+                Бейбіт күн астында болмаған қадірі.
+                Алаштын азабы басынан кеше өткен...
+            </div>
+            <div class="card-footer">
+                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
+                <button class="like-btn" onclick="likeItem('poem1')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
+            </div>
+        </div>
 
-                <strong>Соңы...</strong>
+        <div class="content-card story-card" id="story1">
+            <span class="content-title">«Бақыт есімді бала»</span>
+            <div class="preview-text">Жалғыздық, даланың салқын лебі бар, өзіммен-өзім бір кофеханада...</div>
+            <div class="full-text">
+                Бұл әңгіменің толық мәтіні осында болады...
+            </div>
+            <div class="card-footer">
+                <button class="read-more" onclick="toggleContent(this)">Толығырақ</button>
+                <button class="like-btn" onclick="likeItem('story1')"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Поэзия (Өлеңдер)</h2>
-        <div class="content-box">
-            <div class="content-header poem-header" onclick="toggleContent(this)">«Тәуелді» <span>+</span></div>
-            <div class="content-body" style="font-style: italic;">
-                Білмейміз, шын қайда құрбандық қабірі, 
-                Құрметке лайықты шейіттін әр бірі...
-            </div>
-        </div>
-        <div class="content-box">
-            <div class="content-header poem-header" onclick="toggleContent(this)">«Ұйқысыз түн» <span>+</span></div>
-            <div class="content-body" style="font-style: italic;">
-                Көшенін шуы басылған, дала тыныш, 
-                Қала тыныш шықпайды ала дыбыс...
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Threads жазбасы</h2>
-        <div style="display: flex; justify-content: center;">
-            <blockquote class="threads-embed" data-request-url="https://www.threads.net/@ayan_qalam/post/DP_jv-aiK6U" data-width="500">
-                <a href="https://www.threads.net/@ayan_qalam/post/DP_jv-aiK6U">Threads жазбасы</a>
-            </blockquote>
-            <script async src="https://www.threads.net/embed.js"></script>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Instagram</h2>
-        <div class="insta-gallery">
-            <img src="insta1/insta1.jpg" alt="1" class="insta-post">
-            <img src="insta2/insta2.jpg" alt="2" class="insta-post">
-            <img src="insta3/insta3.jpg" alt="3" class="insta-post">
-        </div>
-    </section>
-
-    <footer>© 2024 Иманалиев Аян. Барлық құқықтар қорғалған.</footer>
+    <footer>© 2024 Иманалиев Аян.</footer>
 </div>
 
 <script>
-    function toggleContent(el) {
-        const body = el.nextElementSibling;
-        const icon = el.querySelector('span');
-        if (body.style.display === "block") {
-            body.style.display = "none";
-            el.style.borderRadius = "12px";
-            icon.innerText = "+";
+    // Түнгі режим функциясы
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+        const icon = document.querySelector('.theme-toggle i');
+        if(document.body.classList.contains('light-mode')) {
+            icon.className = 'fas fa-sun';
         } else {
-            body.style.display = "block";
-            el.style.borderRadius = "12px 12px 0 0";
-            icon.innerText = "-";
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    // Мәтінді ашу/жабу
+    function toggleContent(btn) {
+        const fullText = btn.parentElement.previousElementSibling;
+        const preview = fullText.previousElementSibling;
+        if (fullText.style.display === "block") {
+            fullText.style.display = "none";
+            preview.style.display = "-webkit-box";
+            btn.innerText = "Толығырақ";
+        } else {
+            fullText.style.display = "block";
+            preview.style.display = "none";
+            btn.innerText = "Жабу";
+        }
+    }
+
+    // Лайк функциясы
+    function likeItem(id) {
+        let countEl = document.querySelector(`#${id} .like-count`);
+        let icon = document.querySelector(`#${id} .like-btn i`);
+        let count = parseInt(countEl.innerText);
+        
+        if(icon.classList.contains('far')) {
+            icon.className = 'fas fa-heart';
+            countEl.innerText = count + 1;
+        } else {
+            icon.className = 'far fa-heart';
+            countEl.innerText = count - 1;
         }
     }
 </script>
 
+<script type="text/javascript">
+var sc_project=13200323; 
+var sc_invisible=1; 
+var sc_security="5cd2c89f"; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 </body>
 </html>
