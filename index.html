@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иманалиев Аян — Ресми сайт</title>
     
-    <title>Иманалиев Аян — Ресми сайт | Жазушы, Маркетолог, Дизайнер</title>
-    <meta name="description" content="Иманалиев Аянның ресми сайты. Өлеңдері, өмірбаяны және шығармашылық жұмыстары. Жазушы, маркетолог және дизайнер.">
-    <meta name="keywords" content="Иманалиев Аян, Аян Қалам, ақын Аян, Ақтөбе жазушылары, Иманалиев Аян өлеңдері">
-    <meta name="author" content="Иманалиев Аян">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
@@ -22,125 +18,74 @@
             line-height: 1.8;
         }
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 60px 20px;
-        }
+        .container { max-width: 800px; margin: auto; padding: 60px 20px; }
 
-        /* Профиль суреті */
         .profile-img {
-            display: block;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            border: 4px solid #bbdefb;
-            box-shadow: 0 0 25px rgba(187, 222, 251, 0.4);
-            transition: 0.5s;
-        }
-        .profile-img:hover { transform: scale(1.05) rotate(5deg); }
-
-        h1 { font-size: 45px; text-align: center; margin-bottom: 10px; letter-spacing: 1px; }
-        .subtitle { opacity: 0.7; text-align: center; margin-bottom: 40px; font-size: 1.2em; font-style: italic; }
-
-        /* Әлеуметтік желі батырмалары */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
+            display: block; width: 250px; height: auto; margin: 0 auto 30px;
+            border-radius: 15px; border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
+        h1 { font-size: 42px; text-align: center; margin-bottom: 5px; }
+        .subtitle { opacity: 0.9; text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #bbdefb; }
+
+        .social-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 50px; }
         .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            padding: 12px 22px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; gap: 8px; text-decoration: none; color: white;
+            padding: 10px 22px; border-radius: 50px; font-weight: bold; font-size: 14px; transition: 0.3s ease;
         }
-
-        .social-btn:hover { transform: translateY(-7px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
 
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
         .wa { background: #25D366; }
         .tt { background: #000; border: 1px solid #ff0050; }
         .th { background: #000; border: 1px solid #fff; }
 
-        /* Бөлімдер стилі */
         .section {
             background: rgba(255, 255, 255, 0.05);
-            padding: 35px;
-            border-radius: 25px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px; border-radius: 20px; margin-bottom: 30px;
+            backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h2 { color: #bbdefb; border-bottom: 2px solid rgba(187, 222, 251, 0.3); padding-bottom: 10px; margin-top: 0; }
+        h2 { color: #bbdefb; border-bottom: 1px solid rgba(187, 222, 251, 0.2); padding-bottom: 10px; margin: 0 0 20px 0; }
 
-        /* Өлеңдерді ашып-жабу */
-        .poem-box { margin-bottom: 15px; }
-        .poem-preview {
+        /* Мазмұндық блоктар */
+        .content-box { margin-bottom: 15px; }
+        .content-header {
             cursor: pointer;
-            background: rgba(255, 140, 0, 0.2);
+            background: rgba(187, 222, 251, 0.1);
             padding: 15px 20px;
             border-radius: 12px;
-            font-style: italic;
-            border-left: 5px solid #ff8c00;
+            font-weight: 500;
+            border-left: 5px solid #bbdefb;
             transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .poem-preview:hover { background: rgba(255, 140, 0, 0.3); }
+        .content-header:hover { background: rgba(187, 222, 251, 0.2); }
+        
+        /* Өлеңдерге арналған стиль */
+        .poem-header { border-left-color: #ff8c00; background: rgba(255, 140, 0, 0.1); }
+        .poem-header:hover { background: rgba(255, 140, 0, 0.2); }
 
-        .poem-full {
+        .content-body {
             display: none;
             white-space: pre-line;
-            font-style: italic;
             padding: 20px;
-            border-left: 5px solid #ff8c00;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             border-radius: 0 0 12px 12px;
+            margin-top: -5px;
         }
 
-        /* Инстаграм галереясы */
-        .insta-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
+        /* Әңгімелер үшін ерекше стиль */
+        .story-text { font-style: normal !important; line-height: 1.6; color: #e0e0e0; text-align: justify; }
 
-        .insta-grid img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: 0.4s;
-            cursor: pointer;
-        }
-        .insta-grid img:hover { transform: scale(1.1) rotate(2deg); z-index: 10; }
+        .insta-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+        .insta-post { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
 
-        /* ТикТок контейнері */
-        .video-box {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        footer { text-align: center; opacity: 0.5; padding: 40px 0; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.1); }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        footer { text-align: center; opacity: 0.5; padding: 40px 0; }
     </style>
 </head>
 <body>
@@ -149,7 +94,7 @@
 
     <img src="photo/photo.jpg" alt="Иманалиев Аян" class="profile-img">
     <h1>Иманалиев Аян</h1>
-    <div class="subtitle">Жазушы · Маркетолог · Дизайнер</div>
+    <div class="subtitle">Жазушы · Ақын · Спидкубер · Боулер · Маркетолог · Дизайнер</div>
 
     <div class="social-links">
         <a href="https://www.instagram.com/ayan_qalam/" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
@@ -159,75 +104,74 @@
     </div>
 
     <section class="section">
-        <h2>Өмірбаян</h2>
-        <p><strong>Иманалиев Аян</strong> — 2002 жылғы 25 қаңтарда Ақтөбе облысында дүниеге келген.</p>
-        <p>Ол көп қырлы шығармашылық тұлға: ақын, жазушы, спидкубер және дизайнер. Қоғамды өз ойларымен және көркем сөздерімен өзгертуге, жақсылыққа бастауға ұмтылады.</p>
-    </section>
+        <h2>Проза (Әңгімелер)</h2>
+        <div class="content-box">
+            <div class="content-header" onclick="toggleContent(this)">«Бақыт есімді бала» <span>+</span></div>
+            <div class="content-body story-text">
+                Жалғыздық, 
+                Даланың салқын лебі бар, өзіммен-өзім бір кофехананың терассасында...
+                
+                (Әңгіменің толық мәтіні осы жерде орналасқан)
+                
+                ...мен мұңы балақайдын достарыңа айтпасамда өз достарыма айтуды жөн көрдім. 
 
-    <section class="section">
-        <h2>Шығармашылық</h2>
-        
-        <div class="poem-box">
-            <div class="poem-preview" onclick="togglePoem(this)">«Бір шыбық гүл» (Оқу үшін басыңыз)</div>
-            <div class="poem-full">
-                Гүлдерге бәрі-ақ қызыға алады,
-                Күлтесінде үміттің ізі қалады.
-                Қауызын ашқан бір шыбық гүлді
-                Бір күні біреу үзіп алады.
-
-                Шаршатады ма, әлде жазық тұғыры,
-                Ғазал боп кеткен ғашықтық үні.
-                Көлеңке кезген сәулеге құмар —
-                Гүлдердің сондай нәзік ғұмыры.
-            </div>
-        </div>
-
-        <div class="poem-box">
-            <div class="poem-preview" onclick="togglePoem(this)">«Жүрегің неге жаралы...» (Оқу үшін басыңыз)</div>
-            <div class="poem-full">
-                Жүрегің не жаралы ма, жазмыш,
-                Мүмкін өзінің қателігін кешеді.
-                Кейде адамның тағдырын
-                Қисық кеткен бір қимылы шешеді...
+                <strong>Соңы...</strong>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <h2 style="text-align: center;">TikTok Видео</h2>
-        <div class="video-box">
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@ayan_qalam/video/7462438531084209415" data-video-id="7462438531084209415" style="max-width: 605px;min-width: 325px;">
-                <section><a target="_blank" href="https://www.tiktok.com/@ayan_qalam">@ayan_qalam</a></section>
+        <h2>Поэзия (Өлеңдер)</h2>
+        <div class="content-box">
+            <div class="content-header poem-header" onclick="toggleContent(this)">«Тәуелді» <span>+</span></div>
+            <div class="content-body" style="font-style: italic;">
+                Білмейміз, шын қайда құрбандық қабірі, 
+                Құрметке лайықты шейіттін әр бірі...
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="content-header poem-header" onclick="toggleContent(this)">«Ұйқысыз түн» <span>+</span></div>
+            <div class="content-body" style="font-style: italic;">
+                Көшенін шуы басылған, дала тыныш, 
+                Қала тыныш шықпайды ала дыбыс...
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Threads жазбасы</h2>
+        <div style="display: flex; justify-content: center;">
+            <blockquote class="threads-embed" data-request-url="https://www.threads.net/@ayan_qalam/post/DP_jv-aiK6U" data-width="500">
+                <a href="https://www.threads.net/@ayan_qalam/post/DP_jv-aiK6U">Threads жазбасы</a>
             </blockquote>
-            <script async src="https://www.tiktok.com/embed.js"></script>
+            <script async src="https://www.threads.net/embed.js"></script>
         </div>
     </section>
 
     <section class="section">
-        <h2>Instagram Галерея</h2>
-        <div class="insta-grid">
-            <img src="insta1/insta1.jpg" alt="Аян фото 1">
-            <img src="insta2/insta2.jpg" alt="Аян фото 2">
-            <img src="insta3/insta3.jpg" alt="Аян фото 3">
+        <h2>Instagram</h2>
+        <div class="insta-gallery">
+            <img src="insta1/insta1.jpg" alt="1" class="insta-post">
+            <img src="insta2/insta2.jpg" alt="2" class="insta-post">
+            <img src="insta3/insta3.jpg" alt="3" class="insta-post">
         </div>
     </section>
 
-    <footer>
-        © 2024 Иманалиев Аян. Барлық құқықтар қорғалған. <br>
-        <small>Сайт GitHub Pages арқылы жасалды</small>
-    </footer>
-
+    <footer>© 2024 Иманалиев Аян. Барлық құқықтар қорғалған.</footer>
 </div>
 
 <script>
-    function togglePoem(el) {
-        const full = el.nextElementSibling;
-        if (full.style.display === "block") {
-            full.style.display = "none";
+    function toggleContent(el) {
+        const body = el.nextElementSibling;
+        const icon = el.querySelector('span');
+        if (body.style.display === "block") {
+            body.style.display = "none";
             el.style.borderRadius = "12px";
+            icon.innerText = "+";
         } else {
-            full.style.display = "block";
+            body.style.display = "block";
             el.style.borderRadius = "12px 12px 0 0";
+            icon.innerText = "-";
         }
     }
 </script>
