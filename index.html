@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Иманалиев Аян — Автобиография</title>
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  color: #f0f0f0;
+  line-height: 1.9;
+  transition: background 0.5s, color 0.5s;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 70px 25px;
+}
+
+h1 { font-size: 56px; margin-bottom: 10px; letter-spacing: 2px; }
+h2 { font-size: 32px; margin-bottom: 20px; }
+.subtitle { opacity: 0.6; margin-bottom: 60px; }
+
+.section { margin-bottom: 80px; animation: fadeIn 1s ease forwards; }
+
+.poem-preview {
+  cursor: pointer;
+  border-left: 5px solid #777;
+  padding-left: 25px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.poem-full {
+  white-space: pre-line;
+  border-left: 5px solid #777;
+  padding-left: 25px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  margin: 20px 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.social a {
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.social a.instagram { color: #ff8c00; }
+.social a.instagram:hover { color: #ffa500; }
+.social a.whatsapp { color: #25D366; }
+.social a.whatsapp:hover { color: #1ebe5a; }
+
+.instagram-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.instagram-feed img {
+  width: calc(33% - 10px);
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.instagram-feed img:hover {
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+footer {
+  text-align: center;
+  opacity: 0.4;
+  font-size: 14px;
+  margin-top: 60px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Түнгі/күн режим */
+body.light-mode {
+  background: #f5f5f5;
+  color: #111;
+}
+body.light-mode .poem-preview,
+body.light-mode .poem-full { border-left-color: #ccc; }
+body.light-mode .social a.instagram { color: #ff8c00; }
+body.light-mode .social a.whatsapp { color: #25D366; }
+
+.toggle-theme-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #ff8c00;
+  color: #fff;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+.toggle-theme-btn:hover { background: #ffa500; }
+</style>
+</head>
+<body>
+
+<button class="toggle-theme-btn" onclick="toggleTheme()">Түнгі/Күн режим</button>
+
+<div class="container">
+
+<!-- Басты бөлім -->
+<section class="section">
+<h1>Иманалиев Аян</h1>
+<div class="subtitle">Жазушы · Маркетолог · Дизайнер</div>
+<img src="photo.jpg" alt="Аянның суреті">
+<p>
+Иманалиев Аян<br>
+2002 жылғы 25 қаңтарда, Ақтөбе облысында дүниеге келген.<br>
+Ақын, жазушы, спидкубер, боулер және флерингке қызығады. Қызыққан дүниесін игеруге ұмтылады, әлеуметтік желілерде белсенді, қоғамды өз ойларымен, ойлы сөздерімен өзгертуге тырысады.
+</p>
+</section>
+
+<!-- Менің өмірге ренжігім келмейді -->
+<section class="section">
+<h2>Менің өмірге ренжігім келмейді</h2>
+<p>
+Шытынап тұрған қара шаңырақтың биіктігінен қорқып, 
+құласа ойпат болатынынан үрейленіп, бірліктің бір тесіктен 
+сығалап жүргенінен қымсынып, менің күндерім тізбектеліп өтіп жатты.
+</p>
+<p>
+Кеудесі үмітке толы адамдай, бір күні бәрі жақсы болады деген 
+қысқа сөйлеммен шектеліп жүрмін. Мүмкін бұылай дұрыс та шығар, 
+өткенге өкпелегенше, келерге үміт артқан әлдеқайда тиімдірек емеспе?
+</p>
+<p>
+Талай табанымды тілген шыны жолдар мен тікенді төбелер, 
+қан аралас іздер ғана болып қалды. Бірақ менің оған бола қайғырғым келмейді. 
+Құлағымда қанша дауылды көшелердің шуы қалса да, әсері 
+әлдеқайда бос қуыс кеудемді тастап кеткен.
+</p>
+<p>
+Әр адамның тағдырында әр түрлі от, күлін таптап күйелі болғаннан не пайда. 
+Дегенмен, келешекке құшағыңды қанша жайсаң да, өткеннің етегіне 
+келіп жармасып қалмайтындығы тағы бар. Кек сақтағандық емес, 
+көңіл қалғандықтан көп есіне аласың, ал егер қалған көнілің ақ болса, 
+оған тағы да жол беруін әбден мүмкін.
+</p>
+<p>
+Балалық шақтың тәтті болатындығы, қиялға еркін ерік беретініміз, 
+ересек өмірге жақындаған сайын шектеулермен шекаралар пайда болады. 
+Бізге заңды бұзу қорқынышты, бірақ өте қызық.
+</p>
+<p>Өмірді өмір деп қабылдау қажет.</p>
+</section>
+
+<!-- Бір шыбық гүл -->
+<section class="section">
+<h2>Бір шыбық гүл</h2>
+<div class="poem-preview" onclick="togglePoem(this)">
+  Гүлдерге бәрі-ақ қызыға алады,<br>
+  Күлтесінде үміттің ізі қалады...
+</div>
+<div class="poem-full" style="display:none;">
+Гүлдерге бәрі-ақ қызыға алады,
+Күлтесінде үміттің ізі қалады.
+Қауызын ашқан бір шыбық гүлді
+Бір күні біреу үзіп алады.
+
+Шаршатады ма, әлде жазық тұғыры,
+Ғазал боп кеткен ғашықтық үні.
+Көлеңке кезген сәулеге құмар —
+Гүлдердің сондай нәзік ғұмыры.
+
+Даланың жауып жаңбыры майда,
+Бүршік дәндері інгәләмайды ма.
+Жарым ес жандар тікен сабақты
+Түбінен қиып, ұрлап алмай ма.
+
+Шырай түспесе, солып барлығы,
+Шуақ шашатын сынсып әрбірі.
+Қоңыр күзде қурап қалатын —
+Бір шыбық гүлдің қыршын тағдыры.
+</div>
+</section>
+
+<!-- Жүрегін не жаралыма -->
+<section class="section">
+<h2>Жүрегін не жаралыма</h2>
+<div class="poem-preview" onclick="togglePoem(this)">
+  Жүрегін не жаралыма, жазмыш,<br>
+  Мүмкін өзінің қателігін кешеді...
+</div>
+<div class="poem-full" style="display:none;">
+Жүрегін не жаралыма, жазмыш,
+Мүмкін өзінің қателігін кешеді.
+Кейде адамның тағдырын
+Қисық кеткен бір қимылы шешеді.
+
+Сосын үмітпен қатар туып күмәнің,
+Бұл өмірді: тарам жолдар деседі.
+Қу кеуденде қаншасы бар күнәнін,
+Мейлі олардың есебі жоқ есебі.
+
+Жоқ қайғырма, қайғы деген құрысын,
+Сол дертіңнің болмаса да еш емі.
+Бағытыңды бір арнаға бұрып көр,
+Басыңа бақ келіп қонар бес елі.
+
+Өткеніңнің төнкере берме түкпірін,
+Ол өмірді өңдеу жағы кеш енді 
+Тек тұрақты қараңғылық жоқ күнім
+Өзің үшін сабырыңа келші енді,
+(Сенші енді) …
+</div>
+</section>
+
+<!-- Байланыс -->
+<section class="section social">
+<h2>Менімен байланыс</h2>
+<p>
+<a href="https://www.instagram.com/ayan_qalam/" target="_blank" class="instagram">Instagram</a> |
+<a href="https://wa.me/77471752939" target="_blank" class="whatsapp">WhatsApp</a>
+</p>
+</section>
+
+<!-- Instagram суреттері -->
+<section class="section">
+<h2>Instagram фотолар</h2>
+<div class="instagram-feed">
+  <img src="insta1.jpg" alt="Instagram сурет 1">
+  <img src="insta2.jpg" alt="Instagram сурет 2">
+  <img src="insta3.jpg" alt="Instagram сурет 3">
+</div>
+</section>
+
+<footer>
+© Аян
+</footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+}
+
+function togglePoem(el){
+  const full = el.nextElementSibling;
+  if(full.style.display === "none"){
+    full.style.display = "block";
+    el.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
