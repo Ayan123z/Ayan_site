@@ -1,168 +1,335 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="kk" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Иманалиев Аян — Ресми сайт</title>
-    <meta name="description" content="Иманалиев Аянның ресми сайты. Жазушы, ақын, спедкубер, боулер, маркетолог, дизайнер.">
-    <meta name="keywords" content="Иманалиев Аян, Аян Қалам, ақын, жазушы, спедкубер, боулер, маркетолог, дизайнер">
-    <meta name="author" content="Иманалиев Аян">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Иманалиев Аян — ресми сайт</title>
+<meta name="description" content="Иманалиев Аян — ақын, жазушы. Өлеңдер, әңгімелер және шығармашылық.">
+<meta name="keywords" content="Иманалиев Аян, Аян Үшәріп, ақын, жазушы, өлеңдер, қазақ поэзиясы">
+<meta name="author" content="Иманалиев Аян">
+<meta name="theme-color" content="#0d0d12">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Open Graph (әлеуметтік желіде сілтеме әдемі көрінеді) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Иманалиев Аян — ресми сайт">
+<meta property="og:description" content="Ақын, жазушы. Өлеңдер мен әңгімелер.">
+<meta property="og:locale" content="kk_KZ">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #0e0e0e, #1a1a3a, #0a0a2a, #1f1f3f);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #f0f0f0;
-            line-height: 1.8;
-            transition: background 0.5s, color 0.5s;
-        }
 
-        /* Күн/түн режимі */
-        body.day { background: linear-gradient(120deg, #f0f0f0, #e0e0ff); color: #0a0a0a; }
-        body.day .section { background: rgba(255,255,255,0.7); color: #0a0a0a; border: 1px solid rgba(0,0,0,0.1); }
-        body.day .poem-preview { background: rgba(255,140,0,0.1); border-left: 5px solid #ff8c00; color: #0a0a0a; }
-        body.day .poem-full { background: rgba(255,255,255,0.5); border-left: 5px solid #ff8c00; color: #0a0a0a; }
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== Түс айнымалылары (екі режим) ===== */
+:root[data-theme="dark"]{
+  --bg:#0d0d12; --bg2:#12121b; --ink:#ece7da; --muted:#8d8a82;
+  --gold:#e8c66a; --gold-soft:#c9a94e; --card:#16161f; --line:rgba(255,255,255,.07);
+  --shadow:0 18px 50px rgba(0,0,0,.55);
+}
+:root[data-theme="light"]{
+  --bg:#f7f3ea; --bg2:#efe9db; --ink:#1d1a14; --muted:#6f6a5e;
+  --gold:#9a7b23; --gold-soft:#b8902f; --card:#fffdf7; --line:rgba(0,0,0,.08);
+  --shadow:0 18px 50px rgba(120,100,40,.14);
+}
 
-        .container { max-width: 900px; margin: auto; padding: 60px 20px; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(140% 100% at 50% -10%, var(--bg2) 0%, var(--bg) 55%) fixed,
+    var(--bg);
+  color:var(--ink);
+  font-family:'PT Serif',Georgia,serif;
+  line-height:1.85; font-size:18px;
+  -webkit-font-smoothing:antialiased;
+  transition:background .6s ease,color .6s ease;
+}
 
-        /* Алғашқы сурет */
-        .profile-img {
-            display: block;
-            width: 300px;
-            height: 400px;
-            object-fit: cover;
-            margin: 0 auto 25px;
-            border-radius: 12px; /* аз ғана бұрыш */
-            border: 4px solid #bbdefb;
-            box-shadow: 0 10px 25px rgba(187,222,251,0.5);
-            transition: 0.5s;
-        }
-        .profile-img:hover { transform: scale(1.05) rotate(1deg); }
+/* ===== Интро (қолтаңба) ===== */
+#intro{
+  position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(120% 120% at 50% 42%,transparent 55%,rgba(0,0,0,.25) 100%),var(--bg);
+}
+#intro.done{ opacity:0; visibility:hidden; transition:opacity .7s ease,visibility .7s; }
+.intro-sig{ width:min(86vw,560px); }
+#introSig{ width:100%; height:auto; display:block; filter:drop-shadow(0 4px 8px rgba(0,0,0,.3)); }
+.sig-name{ font-family:'Great Vibes',cursive; font-size:220px; fill:var(--gold);
+  clip-path:inset(0 100% 0 0); }
+.sig-fl{ fill:var(--gold); }
+.maskpath{ fill:none; stroke:#fff; stroke-width:26; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:1; stroke-dashoffset:1; }
+#intro.run .sig-name{ animation:sigwrite 1.5s cubic-bezier(.55,.06,.2,1) forwards; }
+#intro.run .maskpath{ animation:sigdraw .95s cubic-bezier(.4,0,.3,1) forwards 1.2s; }
+@keyframes sigwrite{ to{ clip-path:inset(0 0 0 0); } }
+@keyframes sigdraw{ to{ stroke-dashoffset:0; } }
 
-        h1 { font-size: 40px; text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; opacity: 0.8; margin-bottom: 40px; font-style: italic; }
+/* ===== Тақырып ауыстырғыш ===== */
+.theme-toggle{
+  position:fixed; top:18px; right:18px; z-index:50;
+  width:46px; height:46px; border-radius:50%; cursor:pointer;
+  border:1px solid var(--line); background:var(--card); color:var(--gold);
+  font-size:18px; box-shadow:var(--shadow); transition:.3s;
+}
+.theme-toggle:hover{ transform:translateY(-2px); }
+:root[data-theme="dark"] .ico-sun{display:inline} :root[data-theme="dark"] .ico-moon{display:none}
+:root[data-theme="light"] .ico-sun{display:none} :root[data-theme="light"] .ico-moon{display:inline}
 
-        .section { 
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+/* ===== Орналасу ===== */
+.container{ max-width:780px; margin:0 auto; padding:70px 22px 40px; }
 
-        h2 { color: #bbdefb; border-bottom: 2px solid rgba(187,222,251,0.3); padding-bottom: 10px; margin-top: 0; }
+/* ===== Кіріспе блок ===== */
+.hero{ text-align:center; margin-bottom:56px; }
+.profile-img{
+  width:200px; height:262px; object-fit:cover; border-radius:14px; display:block; margin:0 auto 26px;
+  border:1px solid var(--line); box-shadow:var(--shadow);
+}
+.profile-img.placeholder{
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Great Vibes',cursive; font-size:130px; color:var(--gold);
+  background:var(--card);
+}
+.name{ font-size:clamp(30px,7vw,46px); font-weight:700; letter-spacing:.5px; }
+.roles{ color:var(--muted); font-style:italic; font-size:15px; margin-top:8px; letter-spacing:.3px; }
 
-        /* Өлеңдер */
-        .poem-container { display: flex; flex-wrap: wrap; gap: 20px; }
-        .poem-box { flex: 1 1 45%; min-width: 250px; }
-        .poem-preview {
-            cursor: pointer;
-            background: rgba(255,140,0,0.2);
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-style: italic;
-            border-left: 5px solid #ff8c00;
-        }
-        .poem-full {
-            display: none;
-            white-space: pre-line;
-            font-style: italic;
-            padding: 20px;
-            border-left: 5px solid #ff8c00;
-            background: rgba(0,0,0,0.2);
-            border-radius: 0 0 12px 12px;
-        }
+/* ===== Бөлімдер ===== */
+.section{ margin-bottom:50px; }
+.section>h2{
+  font-size:14px; letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+  font-weight:700; margin-bottom:22px; position:relative; padding-bottom:12px;
+}
+.section>h2::after{ content:""; position:absolute; left:0; bottom:0; width:46px; height:2px; background:var(--gold); opacity:.6; }
+.section p{ color:var(--ink); }
 
-        /* Галерея */
-        .gallery { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-        .gallery img { width: 250px; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: 0.4s; }
-        .gallery img:hover { transform: scale(1.05) rotate(2deg); }
+/* ===== Шығармалар (өлең/әңгіме) ===== */
+.works{ display:flex; flex-direction:column; gap:14px; }
+.work{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.work-head{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:14px;
+  background:none; border:none; cursor:pointer; color:var(--ink); text-align:left;
+  font-family:inherit; font-size:20px; padding:18px 22px; transition:background .25s;
+}
+.work-head:hover{ background:rgba(232,198,106,.06); }
+.work-title{ font-weight:700; }
+.work-genre{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);
+  border:1px solid var(--line); padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.work-body{ padding:6px 24px 24px; border-top:1px solid var(--line); }
+.work-img{ width:100%; max-height:340px; object-fit:cover; border-radius:12px; margin:16px 0; }
+.work-text{ white-space:pre-line; font-style:italic; color:var(--ink); line-height:2; }
+.work-sign{ text-align:right; color:var(--gold); font-style:italic; margin-top:16px; font-size:15px; }
 
-        /* Соц. желі логотиптер */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            padding: 12px 22px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .social-btn:hover { transform: translateY(-7px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-        .wa { background: #25D366; }
-        .tt { background: #000; border: 1px solid #ff0050; }
-        .th { background: #000; border: 1px solid #fff; }
+/* ашылу/жабылу анимациясы */
+.work-body{ animation:fadein .5s ease; }
+@keyframes fadein{ from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none} }
 
-        footer { text-align: center; opacity: 0.5; padding: 40px 0; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.1); }
+/* қалам спиннері (шығарма ашылғанда қысқа көрінеді) */
+.pen-spin{ display:flex; justify-content:center; padding:26px 0; }
+.pen-spin svg{ width:54px; height:54px; }
+.pen-spin path{ fill:none; stroke:var(--gold); stroke-width:7; stroke-linecap:round;
+  stroke-dasharray:80; stroke-dashoffset:80; animation:penloop 1s linear infinite; }
+@keyframes penloop{ 0%{stroke-dashoffset:80} 50%{stroke-dashoffset:0} 100%{stroke-dashoffset:-80} }
 
-        /* Gradient animation */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* ===== Галерея ===== */
+.gallery{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+.gallery-item{ display:block; border-radius:16px; overflow:hidden;
+  border:1px solid var(--line); box-shadow:var(--shadow); transition:.35s; }
+.gallery-item:hover{ transform:scale(1.03) rotate(1deg); box-shadow:0 22px 50px rgba(0,0,0,.45); }
+.gallery-item img{ width:100%; height:280px; object-fit:cover; display:block; }
 
-        /* Күн/түн батырма */
-        .day-night-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #ff8c00;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 999;
-        }
-        .day-night-btn:hover { opacity: 0.8; }
-    </style>
+
+.social{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:10px 0 60px; }
+.soc{
+  text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.4px;
+  padding:11px 22px; border-radius:50px; border:1px solid var(--line); background:var(--card);
+  transition:.3s cubic-bezier(.175,.885,.32,1.275);
+}
+.soc:hover{ transform:translateY(-4px); border-color:var(--gold); color:var(--gold); box-shadow:var(--shadow); }
+
+/* ===== Аяқ ===== */
+.footer{ text-align:center; padding:40px 0 20px; border-top:1px solid var(--line); }
+.foot-sig{ font-family:'Great Vibes',cursive; font-size:54px; color:var(--gold); line-height:1; margin-bottom:8px; }
+.footer p{ color:var(--muted); font-size:13px; }
+
+/* ===== Кіру анимациясы (бөлімдер кезекпен пайда болады) ===== */
+.reveal{ opacity:0; transform:translateY(22px); }
+.reveal.in{ opacity:1; transform:none; transition:opacity .8s ease, transform .8s ease; }
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important; transition:none!important}
+  .reveal{opacity:1; transform:none}
+  .sig-name{clip-path:none} .maskpath{stroke-dashoffset:0}
+}
+
+</style>
+
+<!-- SEO: құрылымдық дерек (Google өлеңдерді танып, жақсы көрсетеді) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Иманалиев Аян",
+  "alternateName": "Аян Үшәріп",
+  "jobTitle": ["Ақын", "Жазушы"],
+  "birthDate": "2002-01-25",
+  "sameAs": [
+    "https://www.instagram.com/ayan_qalam/",
+    "https://www.tiktok.com/@ayan_qalam",
+    "https://www.threads.net/@ayan_qalam"
+  ]
+}
+</script>
 </head>
 <body>
 
-<button class="day-night-btn" onclick="toggleDayNight()">Күн/Түн</button>
+<!-- ИНТРО: қолтаңба сиямен жазылады (бір сессияда бір рет) -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-sig">
+    <svg viewBox="0 0 1000 420" id="introSig">
+      <defs>
+        <mask id="reveal" maskUnits="userSpaceOnUse">
+          <path class="maskpath" pathLength="1" d="M 700 232 C 762 250,804 272,772 306 C 742 338,600 352,430 352 C 360 353,330 346,322 332 C 318 324,326 318,336 324"/>
+        </mask>
+      </defs>
+      <text class="sig-name" x="500" y="300" text-anchor="middle">Ayan</text>
+      <path class="sig-fl" mask="url(#reveal)" d="M 699.2 234.8 L 703.8 236.3 L 708.4 237.8 L 712.9 239.4 L 717.3 240.9 L 721.6 242.5 L 725.8 244.1 L 729.8 245.7 L 733.7 247.3 L 737.5 249.0 L 741.2 250.7 L 744.7 252.3 L 748.0 254.0 L 751.2 255.8 L 754.3 257.5 L 757.1 259.2 L 759.8 261.0 L 762.3 262.8 L 764.6 264.5 L 766.8 266.3 L 768.7 268.0 L 770.4 269.8 L 771.9 271.5 L 773.1 273.2 L 774.2 274.9 L 775.1 276.5 L 775.7 278.1 L 776.2 279.6 L 776.5 281.1 L 776.6 282.6 L 776.5 284.1 L 776.3 285.7 L 775.9 287.3 L 775.3 288.9 L 774.5 290.7 L 773.5 292.6 L 772.2 294.5 L 770.6 296.6 L 768.8 298.7 L 766.7 300.8 L 764.5 302.7 L 762.0 304.6 L 759.0 306.4 L 755.5 308.3 L 751.6 310.1 L 747.3 311.9 L 742.5 313.7 L 737.4 315.4 L 731.8 317.0 L 725.9 318.6 L 719.6 320.2 L 712.9 321.8 L 705.9 323.3 L 698.5 324.8 L 690.8 326.2 L 682.8 327.6 L 674.5 329.1 L 665.9 330.5 L 657.0 331.8 L 647.8 333.2 L 638.3 334.6 L 628.6 335.9 L 618.6 337.2 L 608.4 338.5 L 597.9 339.8 L 587.1 341.0 L 576.2 342.1 L 565.0 343.2 L 553.6 344.3 L 542.0 345.3 L 530.2 346.1 L 518.2 346.9 L 506.1 347.6 L 493.8 348.3 L 481.3 348.8 L 468.7 349.2 L 455.9 349.5 L 443.0 349.8 L 430.0 350.0 L 424.7 350.1 L 419.5 350.1 L 414.6 350.2 L 409.7 350.2 L 405.0 350.1 L 400.5 350.1 L 396.1 350.0 L 391.9 349.8 L 387.8 349.7 L 383.8 349.5 L 380.0 349.2 L 376.4 349.0 L 372.8 348.7 L 369.4 348.3 L 366.2 348.0 L 363.0 347.6 L 360.0 347.2 L 357.1 346.7 L 354.4 346.2 L 351.8 345.7 L 349.3 345.2 L 346.9 344.6 L 344.6 344.0 L 342.5 343.4 L 340.5 342.8 L 338.6 342.1 L 336.8 341.4 L 335.1 340.7 L 333.5 339.9 L 332.1 339.1 L 330.7 338.3 L 329.5 337.5 L 328.3 336.7 L 327.3 335.8 L 326.3 334.9 L 325.5 334.0 L 324.7 333.1 L 324.0 332.2 L 323.4 331.2 L 323.2 330.7 L 323.0 330.2 L 322.8 329.7 L 322.7 329.3 L 322.6 328.8 L 322.6 328.4 L 322.6 327.9 L 322.6 327.5 L 322.6 327.1 L 322.7 326.8 L 322.8 326.4 L 322.9 326.1 L 323.1 325.8 L 323.2 325.5 L 323.4 325.2 L 323.7 324.9 L 323.9 324.7 L 324.2 324.4 L 324.5 324.2 L 324.8 324.0 L 325.1 323.8 L 325.5 323.7 L 325.9 323.5 L 326.3 323.4 L 326.8 323.3 L 327.2 323.2 L 327.7 323.2 L 328.2 323.2 L 328.8 323.2 L 329.3 323.2 L 329.9 323.3 L 330.5 323.4 L 331.1 323.6 L 331.8 323.8 L 332.4 324.0 L 333.1 324.3 L 333.8 324.6 L 334.5 325.0 L 335.2 325.4 L 336.8 322.6 L 336.0 322.1 L 335.2 321.7 L 334.4 321.3 L 333.6 321.0 L 332.8 320.7 L 332.0 320.5 L 331.2 320.3 L 330.5 320.1 L 329.7 320.0 L 329.0 320.0 L 328.2 319.9 L 327.5 320.0 L 326.8 320.0 L 326.2 320.1 L 325.5 320.3 L 324.9 320.4 L 324.3 320.7 L 323.7 320.9 L 323.1 321.2 L 322.6 321.6 L 322.1 321.9 L 321.7 322.3 L 321.2 322.8 L 320.8 323.3 L 320.5 323.8 L 320.2 324.3 L 319.9 324.8 L 319.7 325.4 L 319.5 326.0 L 319.4 326.7 L 319.4 327.3 L 319.3 327.9 L 319.4 328.6 L 319.4 329.3 L 319.6 330.0 L 319.7 330.6 L 320.0 331.3 L 320.2 332.0 L 320.6 332.8 L 321.3 334.0 L 322.1 335.1 L 323.0 336.2 L 324.0 337.2 L 325.1 338.3 L 326.3 339.2 L 327.6 340.2 L 329.0 341.1 L 330.5 342.0 L 332.1 342.8 L 333.7 343.6 L 335.5 344.4 L 337.4 345.2 L 339.4 345.9 L 341.5 346.6 L 343.8 347.2 L 346.1 347.8 L 348.5 348.4 L 351.1 349.0 L 353.8 349.5 L 356.6 350.0 L 359.5 350.5 L 362.6 350.9 L 365.8 351.3 L 369.1 351.7 L 372.5 352.1 L 376.1 352.4 L 379.8 352.7 L 383.6 353.0 L 387.6 353.2 L 391.7 353.4 L 396.0 353.6 L 400.4 353.7 L 405.0 353.8 L 409.7 353.9 L 414.5 354.0 L 419.5 354.0 L 424.7 354.1 L 430.0 354.0 L 443.0 354.1 L 455.9 354.2 L 468.7 354.3 L 481.4 354.3 L 493.9 354.3 L 506.3 354.3 L 518.5 354.3 L 530.5 354.3 L 542.4 354.2 L 554.1 354.1 L 565.6 353.9 L 576.9 353.7 L 588.0 353.4 L 598.9 353.0 L 609.5 352.6 L 620.0 352.1 L 630.2 351.5 L 640.1 350.7 L 649.8 349.9 L 659.2 349.0 L 668.4 347.9 L 677.2 346.8 L 685.8 345.5 L 694.1 344.1 L 702.0 342.6 L 709.7 341.0 L 717.0 339.3 L 724.0 337.5 L 730.6 335.6 L 736.9 333.6 L 742.9 331.6 L 748.5 329.4 L 753.7 327.1 L 758.6 324.7 L 763.1 322.3 L 767.3 319.7 L 771.0 317.0 L 774.4 314.1 L 777.3 311.2 L 779.9 308.1 L 782.1 305.2 L 784.0 302.2 L 785.6 299.3 L 787.0 296.3 L 788.1 293.3 L 788.8 290.4 L 789.3 287.4 L 789.4 284.4 L 789.3 281.5 L 788.8 278.7 L 788.0 276.0 L 787.0 273.3 L 785.6 270.8 L 784.1 268.4 L 782.4 266.1 L 780.4 263.9 L 778.3 261.8 L 776.0 259.8 L 773.5 257.9 L 770.9 256.0 L 768.1 254.2 L 765.1 252.5 L 762.0 250.8 L 758.8 249.1 L 755.4 247.5 L 751.9 245.9 L 748.3 244.4 L 744.5 242.9 L 740.6 241.4 L 736.6 240.0 L 732.5 238.5 L 728.2 237.1 L 723.9 235.8 L 719.5 234.4 L 714.9 233.1 L 710.3 231.8 L 705.6 230.5 L 700.8 229.2 Z"/>
+    </svg>
+  </div>
+</div>
 
-<div class="container">
+<!-- Тақырып панелі -->
+<button id="themeToggle" class="theme-toggle" aria-label="Күн/Түн">
+  <span class="ico-sun">☀</span><span class="ico-moon">🌙</span>
+</button>
 
-    <!-- Алғашқы сурет -->
-    <img src="photo/photo.jpg" alt="Иманалиев Аян" class="profile-img">
-    <h1>Иманалиев Аян</h1>
-    <div class="subtitle">Жазушы · Ақын · Спедкубер · Боуелер · Маркетолог · Дизайнер</div>
+<main class="container">
 
-    <!-- Өмірбаян -->
-    <section class="section">
-        <h2>Өмірбаян</h2>
-        <p><strong>Иманалиев Аян</strong> — 2002 жылғы 25 қаңтарда Ақтөбе облысында дүниеге келген. Ол көп қырлы шығармашылық тұлға: ақын, жазушы, спедкубер және дизайнер.</p>
-    </section>
+  <header class="hero reveal">
+    
+    <div class="profile-img placeholder">А</div>
+    
+    <h1 class="name">Иманалиев Аян</h1>
+    <p class="roles">Ақын · Жазушы · Спедкубер · Боулер · Маркетолог · Дизайнер</p>
+  </header>
 
-    <!-- Өлеңдер -->
-    <section class="section">
-        <h2>Өлеңдер</h2>
-        <div class="poem-container">
-            <div class="poem-box">
-                <div class="poem-preview" onclick="togglePoem(this)">Бір шыбық гүл...</div>
-                <div class="poem-full">
-Бір шыбық гүл
+  <section class="section reveal">
+    <h2>Өмірбаян</h2>
+    <p><strong>Иманалиев Аян</strong> — 2002 жылғы 25 қаңтарда Ақтөбе облысында
+    дүниеге келген. Көп қырлы шығармашылық тұлға: ақын, жазушы, спедкубер және дизайнер.</p>
+  </section>
 
-Гүлдерге бәрі-ақ қызыға алады,
+  <section class="section reveal" id="poems">
+    <h2>Өлеңдер</h2>
+    <div class="works">
+      
+      <article class="work" data-id="4">
+        <button class="work-head" aria-expanded="false">
+          <span class="work-title">Баллада</span>
+          <span class="work-genre">баллада</span>
+        </button>
+        <div class="work-body" hidden>
+          
+          <div class="work-text">Ақ жауынның астында қалған ару,
+Көзінде мұң,
+Көрініп тұр көк нөсерге езілгенің.
+Тамшыларға талатқан табиғаттың,
+Бұл тірлігін мен де іштен түсінбедім.
+Асыға кірген едің төріңді аңсап,
+Отыра салып сонаң соң күрсінгенің.
+Жыпылықтап кірпігің түрін шаршап,
+Мазаңды көп алғандай бұл күн сенің.
+Бүгініңнен тым қатты жылыққансып,
+Ертеңіңе көмілген өлген сенім.
+Басыңды солға қарай шалқайттыңда,
+Қала түніне қолыңды бір сілтедің.
+Жылы жерде сәл жатып маужырадың,
+Көңілсіздікті қолға ұстатып көз ілгенің.
+Қыршын өңің ұйқыға еніп кетті ау,
+Терезені оюлап тылсым демің...
+
+Тар жолдарын ойқаштап тас қаланың,
+Отырып алып ойлана бастағаным.
+Елбең еткен көлікте тербеліп біз,
+Ермек еткен өмірге мас боламын.
+Қоғамдық көлік кенет тез тежеді,
+Бұл сәтімнің шығарып тас талқаның.
+Сен шошындың, тұрдыңда арлы берлі,
+Қылығын кеп жасадың жас баланың.
+Көзіңмен көлік ішін тінтідің кеп,
+Ізін іздеп жүргендей басқа адамның.
+Сабаңа жәймен түсіп отырдыңда,
+Даласына қарадың лас ғаламның.
+— Кешіріңіз! Келесі қай көше еді?...
+Ұқпай тағдыр қайда әкеліп тастағаның,
+Шындықпен қимастықты арластырып,
+Болмады білмимін деуден басқа амалым.</div>
+          <div class="work-sign">©️ Аян</div>
+        </div>
+      </article>
+      
+      <article class="work" data-id="3">
+        <button class="work-head" aria-expanded="false">
+          <span class="work-title">Бақ құс</span>
+          <span class="work-genre">лирика</span>
+        </button>
+        <div class="work-body" hidden>
+          
+          <div class="work-text">Жылы жаққа құштар, құстар ғана ма,
+Қанаттарын серпей берер ақ ала.
+Тау секілді тұрақты емес дүние,
+Күнде ұзақ нұр шашпайды далаға.
+Жылы жақта құс бақытты болса да,
+Бақты құсқа санама,
+
+Мейлі топтап, мейлі жұп боп ұшады,
+Кең жайлауға жайылатын құшағы.
+Өзін өзі өлтірсе де, серігінен айрылып,
+Ұзын мойын жалғыз аққу құсалы.
+Жалғыздықта бақыт жоқтың дәлелі,
+Бардың бағын білген жоқпыз біз әлі.
+
+Жоқ, жоқ, алып бүркітте емес мәңгі ізгі,
+Тек оларға биік ұшу маңызды.
+Бақ дегенде аяқ болмайды түсінші,
+Аяқ болса таптайды ғой тар ізді.
+Бақ дегенде қанатта жоқ қонатын,
+Сірә олар ұшатын тәрізді.</div>
+          <div class="work-sign">©️ Аян</div>
+        </div>
+      </article>
+      
+      <article class="work" data-id="2">
+        <button class="work-head" aria-expanded="false">
+          <span class="work-title">Көңіл</span>
+          <span class="work-genre">лирика</span>
+        </button>
+        <div class="work-body" hidden>
+          
+          <div class="work-text">Көңіліме қол сұққанға кектеніп,
+Маңдайыма сор біткенде бір жылап.
+Өмірімнен тұншыққанда булығып,
+Кетіп қалғым келіп тұрады тым жырақ.
+
+Қайталанған жағдайлардан жалығып,
+Байқалмаған бақытыма маужырап.
+Алыс жақта мекендейтін арман құс,
+Қанат қағып келсе екен хәл сұрап.
+
+Тағдырымның кей тұсында тарығып,
+Қанша сәтте жүруші еді жан шыдап.
+Егер кенет қалса маған жолығып,
+Бақыт деген не өзі, бір сұрақ?</div>
+          <div class="work-sign">©️ Аян</div>
+        </div>
+      </article>
+      
+      <article class="work" data-id="1">
+        <button class="work-head" aria-expanded="false">
+          <span class="work-title">Бір шыбық гүл</span>
+          <span class="work-genre">лирика</span>
+        </button>
+        <div class="work-body" hidden>
+          
+          <div class="work-text">Гүлдерге бәрі-ақ қызыға алады,
 Күлтесінде үміттің ізі қалады.
 Қауызын ашқан бір шыбық гүлді
 Бір күні біреу үзіп алады.
@@ -180,159 +347,122 @@
 Шырай түспесе, солып барлығы,
 Шуақ шашатын сынсып әрбірі.
 Қоңыр күзде қурап қалатын —
-Бір шыбық гүлдің қыршын тағдыры.
-
-© Үшәріп
-                </div>
-            </div>
-
-            <div class="poem-box">
-                <div class="poem-preview" onclick="togglePoem(this)">Көніл...</div>
-                <div class="poem-full">
- Көніліме қол сұққанға кектеніп,
-Мандайыма сор біткенде бір жылап.
-Өмірімнен тұншыққанда булығып,
-Кетіп қалғым келіп тұрады тым жырақ.
-
-Қайталанған жағдайлардан жалығып,
-Байқалмаған бақытыма маужырап.
-Алыс жақта мекендейтін арман құс,
-Қанат қағып келсе екен хәл сұрап.
-
-Тағдырымның кей тұсында тарығып,
-Қанша сәтте жүруші еді жан шыдап.
-Егер кенет қалса маған жолығып,
-Бақыт деген не өзі, бір сұрақ?
-
-© Аян
-                </div>
-            </div>
-<div class="poem-box">
-                <div class="poem-preview" onclick="togglePoem(this)">Бақ құс...</div>
-<div class="poem-full">
-Бақ құс
-
-Жылы жаққа  құштар, құстар ғана ма, 
-Қанаттарын серпей берер ақ ала.
-Тау секілді тұрақты емес дуние, 
-Күнде ұзак нұр шашпайды далага.
-Жылы жақта құс бақытты болсада,
-Бақты құсқа санама,
-
-Мейлі топтап, мейлі жұп боп ұшады, 
-Кең жайлауға жайылатын құшағы.
-Өзін өзі өлтірседе, серігінен айрылып,
-Ұзын мойын жалғыз аққу құсалы.
-Жалғыздықта бақыт жоқтын дәлелі, Бардын бағын білген жоқпыз біз әлі.
- 
-Жоқ, жоқ, альп бүркітте емес мәнгі ізгі, 
-Тек оларга биік ұшу манызды.
-Бақ дегенде аяқ болмайды түсінші, 
-Аяқ болса таптайды ғой тар ізді.
-Бак, дегенде қанатта жоқ қонатын, 
-Сірә олар тулатын тарізді.
-    © Аян
-                </div>
-            </div>
-
-<div class="poem-box">
-                <div class="poem-preview" onclick="togglePoem(this)">Баллада...</div>
-                <div class="poem-full">
-Ақ жауынның астында қалған ару,
-Көзінде мұң, 
-Көрініп тұр көк нөсерге езілгенің.
-Тамшыларға талатқан табиғаттын, 
-Бұл тірлігін менде іштен түсінбедім.
-Асыға кірген едің төрінді аңсап,
-Отыра са(лы)п сонаң соң күрсінгенің.
-Жыпылықтап кірпігің түрін шаршап,
-Мазанды көп алғандай бұл күн сенің.
-Бүгініннең тым қатты жылыққансып, 
-Ертеніңе көмілген өлген сенім.
-Басынды солға қарай шалқайттыңда, 
-Қала түніне қолынды бір сілтедің.
-Жылы жерде сәл жатып маужырадың,
-Көнілсіздікті қолға ұстатып көз ілгенің.
-Қыршын өнің ұйқыға еніп кетті ау,
-Терезені оюлап тылсым демін...
-
-Тар жолдарын ойқаштап тас қаланың,
-Отырып алып ойлана бастағаным.
-Елбен еткен көлікте тербеліп біз, 
-Ермек еткен өмірге мас боламын. 
-Қоғамдық көлік кенет тез тежеді, 
-Бұл сәтімнің шығарып тас талқаның. 
-Сен шошындың, тұрдында арлы берлі,
-Қылығын кеп жасадың жас баланың.
-Көзінмен көлік ішін тінтідің ке(лі)п,
-Ізін іздеп жүргендей басқа адамның.
-Сабаңа жәймен түсіп отырдыңда, 
-Даласына қарадың лас ғаламның. 
--Кешірініз ! Келесі қай көше еді ?...
-Ұқпай тағдыр қайда әке(лі)п тастағаның, 
-Шындықпен қимастықты арластырып, 
-Болмады білмимін деудең басқа амалым.
-
-© Аян 
-
-
-                </div>
-            </div>
-            
-            <!-- Басқа өлеңдерді осылай қосуға болады -->
+Бір шыбық гүлдің қыршын тағдыры.</div>
+          <div class="work-sign">©️ Үшәріп</div>
         </div>
-    </section>
+      </article>
+      
+    </div>
+  </section>
 
-    <!-- Галерея -->
-    <section class="section">
-        <h2>Суреттер</h2>
-        <div class="gallery">
-            <img src="insta1/insta1.jpg" alt="Аян фото 1">
-            <img src="insta2/insta2.jpg" alt="Аян фото 2">
-            <img src="insta3/insta3.jpg" alt="Аян фото 3">
-        </div>
-    </section>
+  
 
-    <!-- Соц. желілер -->
-    <section class="social-links">
-        <a href="https://www.instagram.com/ayan_qalam/" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://wa.me/77471752939" class="social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="https://www.tiktok.com/@ayan_qalam" class="social-btn tt" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-        <a href="https://www.threads.net/@ayan_qalam" class="social-btn th" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
-    </section>
+  
 
-    <footer>©️ 2025 Иманалиев Аян. Барлық құқықтар қорғалған.</footer>
+  <section class="social reveal">
+    <a href="https://www.instagram.com/ayan_qalam/" class="soc ig" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/77471752939" class="soc wa" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://www.tiktok.com/@ayan_qalam" class="soc tt" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.threads.net/@ayan_qalam" class="soc th" target="_blank" rel="noopener">Threads</a>
+  </section>
 
-</div>
+  <footer class="footer">
+    <div class="foot-sig">Ayan</div>
+    <p>©️ 2026 Иманалиев Аян. Барлық құқықтар қорғалған.</p>
+  </footer>
 
-<!-- Скрипт -->
+</main>
+
 <script>
-    function togglePoem(el) {
-        const full = el.nextElementSibling;
-        full.style.display = (full.style.display === "block") ? "none" : "block";
-    }
+// ===== Тақырып (күн/түн) — таңдау есте сақталады =====
+(function () {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  const toggle = document.getElementById('themeToggle');
+  toggle && toggle.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', next === 'dark' ? '#0d0d12' : '#f7f3ea');
+  });
+})();
 
-    function toggleDayNight() {
-        document.body.classList.toggle('day');
-    }
+// ===== Интро: қолтаңба бір сессияда бір рет =====
+(function () {
+  const intro = document.getElementById('intro');
+  if (!intro) return;
+  // қайта кірген оқырманды күттірмейміз
+  if (sessionStorage.getItem('introSeen')) { intro.remove(); return; }
+
+  function finish() {
+    intro.classList.add('done');
+    setTimeout(() => intro.remove(), 800);
+    sessionStorage.setItem('introSeen', '1');
+  }
+  function start() {
+    intro.classList.add('run');
+    setTimeout(finish, 2600);          // жазылып болған соң ериді
+  }
+  // кез келген жерді бассаң — өткізіп жібереді
+  intro.addEventListener('click', finish);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => setTimeout(start, 150));
+  } else {
+    window.addEventListener('load', () => setTimeout(start, 300));
+  }
+})();
+
+// ===== Шығарманы ашу/жабу (қалам спиннерімен) =====
+(function () {
+  const PEN = '<div class="pen-spin"><svg viewBox="0 0 100 40">' +
+    '<path d="M5 20 q10 -15 20 0 t20 0 t20 0 t20 0"/></svg></div>';
+
+  document.querySelectorAll('.work').forEach((work) => {
+    const head = work.querySelector('.work-head');
+    const body = work.querySelector('.work-body');
+    const realText = body.innerHTML;
+    let open = false, busy = false;
+
+    head.addEventListener('click', () => {
+      if (busy) return;
+      if (open) {                       // жабу
+        body.hidden = true;
+        head.setAttribute('aria-expanded', 'false');
+        open = false;
+        return;
+      }
+      busy = true;                      // ашу: алдымен қалам спиннері
+      body.innerHTML = PEN;
+      body.hidden = false;
+      head.setAttribute('aria-expanded', 'true');
+      setTimeout(() => {
+        body.innerHTML = realText;      // сосын мәтін
+        open = true; busy = false;
+      }, 520);
+    });
+  });
+})();
+
+// ===== Бөлімдердің кезекпен пайда болуы =====
+(function () {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((i) => i.classList.add('in')); return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  items.forEach((i) => io.observe(i));
+})();
+
+// ===== PWA: service worker =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+
 </script>
-
-<!-- Көрінбейтін есептегіш -->
-<script type="text/javascript">
-var sc_project=13200323; 
-var sc_invisible=1; 
-var sc_security="5cd2c89f"; 
-</script>
-<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript>
-<div class="statcounter">
-<a title="Web Analytics" href="https://statcounter.com/" target="_blank">
-<img class="statcounter" src="https://c.statcounter.com/13200323/0/5cd2c89f/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade">
-</a>
-</div>
-</noscript>
-
 </body>
 </html>
-
-
